@@ -45,7 +45,6 @@ const Page = () => {
     }
   };
   
-
   const handleEnded = (index) => {
     const newSectionStates = { ...sectionStates };
     newSectionStates[index] = false;
@@ -62,7 +61,6 @@ const Page = () => {
     }
   };
   
-
   return (
     <AnimatePresence mode='wait'>
       <motion.section
@@ -71,24 +69,19 @@ const Page = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.75, ease: 'easeOut', delay: 1 }}  
         className="h-screen"
-        >
+      >
         {motionWorks.map((works, index) => (
           <section data-index={index} key={works.id} className='2xl:max-w-[1280px] w-full mx-auto'>
             <div className='h-screen flex flex-col items-center justify-center'>
               <div className='flex flex-col gap-5 w-[300px] md:w-[600px] lg:w-[800px] pt-20'>
-                <h3 className='font-workSans font-semibold text-[14px] md:text-[16px] xl:text-[20px] text-white tracking-wide'>{works.title}</h3>
-                <p className='font-workSans font-normal text-[12px] md:text-[14px]  text-white opacity-50'>{works.detail}</p>
-                <div 
-                  className='relative flex justify-center items-center mx-auto w-[300px] h-[200px] md:w-[600px] md:h-[350px] lg:w-[800px] lg:h-[450px]'
-                  onMouseEnter={() => setButtonsVisible(true)}
-                  onMouseLeave={() => setButtonsVisible(false)}
-                >
-                  <video 
-                    ref={refs[index]} 
-                    className='w-full h-full object-cover' 
-                    controls={false}
-                    onEnded={() => handleEnded(index)}
-                    >
+                <h3 className='font-workSans font-semibold text-[14px] md:text-[16px] xl:text-[20px] text-white tracking-wide'>
+                  {works.title}
+                </h3>
+                <p className='font-workSans font-normal text-[12px] md:text-[14px]  text-white opacity-50'>
+                  {works.detail}
+                </p>
+                <div className='relative flex justify-center items-center mx-auto w-[300px] h-[200px] md:w-[600px] md:h-[350px] lg:w-[800px] lg:h-[450px]' onMouseEnter={() => setButtonsVisible(true)} onMouseLeave={() => setButtonsVisible(false)}>
+                  <video ref={refs[index]} className='w-full h-full object-cover'  controls={false}onEnded={() => handleEnded(index)}>
                     <source src={works.src} type={works.type} />
                   </video>
                   {buttonsVisible && (
@@ -106,7 +99,6 @@ const Page = () => {
             </div>
           </section>
         ))}
-
         <Footer/>
       </motion.section>
     </AnimatePresence>

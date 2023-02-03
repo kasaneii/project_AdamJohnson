@@ -14,7 +14,7 @@ const works = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.75, ease: 'easeOut', delay: 1 }}  
         className="h-screen"
-        >
+      >
         <Nature/>
         <Street/>
         <Portrait/>
